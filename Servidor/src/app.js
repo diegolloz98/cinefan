@@ -13,6 +13,19 @@ const swaggerUI = require('swagger-ui-express');
 
 const port = process.env.PORT;
 
+const swaggerOptions = {
+    swaggerDefinition: {
+        info:{
+            title: 'cinefan API',
+            servers: ['https://localhost:3000']
+        }
+    },
+    apis: ['.routes/*.js']
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json()); 
 app.use(express.static(path.join(__dirname+'/Content')));
@@ -22,6 +35,3 @@ app.listen(port, ()=>{
     console.log('server running on port ${port}');
 });
 
-app.get('/user',(req,res)=>{
-    
-});
