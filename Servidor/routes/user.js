@@ -10,18 +10,6 @@ const swaggerUI = require('swagger-ui-express');
 
 dotenv.config();
 
-const swaggerOptions = {
-    swaggerDefinition: {
-        info:{
-            'title': 'cinefan API',
-            'version': '1.0.0'
-        }
-    },
-    apis: ['.routes/*.js','app.js']
-};
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
 /** 
  * @swagger
  * /user/:id:
@@ -30,7 +18,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
  *      responses:
  *          '200':
  *              description: User found, info sent
- *          '404':
+ *          '201':
  *              description: User not found
 */
 
