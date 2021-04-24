@@ -13,7 +13,12 @@ export class AppComponent implements OnInit{
     
   }
 
-  ngOnInit():void{}
+  ngOnInit():void{
+    this.authService.authState.subscribe(user=>{
+      if(user)
+        console.log(user);
+    })
+  }
 
   googleLogin(){
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
