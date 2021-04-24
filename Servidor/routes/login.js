@@ -7,10 +7,13 @@ const MongoClient = require('mongodb').MongoClient;
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const app = require("./user");
+const router = express.Router();
 
 dotenv.config();
 
-app.get("login",(req,res)=>{
+router.get("login",(req,res)=>{
     console.log(req);
     res.status(200).send();
 });
+
+module.exports = router;

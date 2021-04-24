@@ -11,5 +11,3 @@ module.exports = {
     playlistRoutes,
     loginRoutes
 };
-
-module.exports = router;

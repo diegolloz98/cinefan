@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const router = express.Router();
 
 dotenv.config();
 
@@ -27,7 +28,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json()); 
 
-app.get("/user/:id", (req, res) =>{
+router.get("/:id", (req, res) =>{
     res.status(200).send("users endpoint by ID");
 });
 
@@ -57,7 +58,7 @@ const upload = multer({
     } 
 }).single('image');
 
-app.get("/",(req, res) =>{
+router.get("",(req, res) =>{
     console.log("users endpoint")
     res.sendFile(__dirname + "/views" + "/index.html")
     User.find({}, (err, results) =>{
@@ -70,7 +71,7 @@ app.get("/",(req, res) =>{
     });
 })
 
-app.post('/user/:id', upload,async (req,res)=>{
+router.post(':id', upload,async (req,res)=>{
     res.statusCode=200;
     let form=req.body;
     let image=req.file;
@@ -92,4 +93,4 @@ app.post('/user/:id', upload,async (req,res)=>{
      res.redirect('http://localhost:3000/');
 })
 
-module.exports = app;
+module.exports = router;

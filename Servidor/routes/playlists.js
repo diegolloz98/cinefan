@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const router = express.Router();
 
 dotenv.config();
 
@@ -54,22 +55,24 @@ const app = express();
  *              description: playlist couldn't be deleted
 */
 
-app.post("/playlists", (req, res)=>{
+router.post("", (req, res)=>{
     res.status(200).send('Playlist created!');
 });
 
-app.get("/playlists/:user_id", (req, res)=>{
+router.get(":user_id", (req, res)=>{
     res.status(200).send('Playlists from user sent!');
 });
 
-app.get("/playlists/:playlist_id", (req, res)=>{
+router.get(":playlist_id", (req, res)=>{
     res.status(200).send('Playlist sent!');
 });
 
-app.delete("/playlists/:playlist_id", (req, res)=>{
+router.delete(":playlist_id", (req, res)=>{
     res.status(200).send('Playlist removed!');
 });
 
-app.patch("/playlists/:playlist_id", (req, res)=>{
+router.patch(":playlist_id", (req, res)=>{
     res.status(200).send('Playlist modified!');
 });
+
+module.exports = router;

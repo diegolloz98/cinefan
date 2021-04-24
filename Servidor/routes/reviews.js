@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
+const router = express.Router();
 
 dotenv.config();
 
@@ -51,18 +52,20 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json()); 
 
-app.get("/reviews/:movie_id", (req, res)=>{
+router.get(":movie_id", (req, res)=>{
     res.status(200).send('all reviews of movie_id');
 });
 
-app.post("/reviews/:movie_id", (req, res)=>{
+router.post(":movie_id", (req, res)=>{
     res.status(200).send('review posted!');
 });
 
-app.patch("/reviews/:movie_id:review_id", (req, res)=>{
+router.patch(":movie_id:review_id", (req, res)=>{
     res.status(200).send('review edited!');
 });
 
-app.delete("/reviews/:movie_id:review_id", (req, res)=>{
+router.delete(":movie_id:review_id", (req, res)=>{
     res.status(200).send('review removed!');
 });
+
+module.exports = router;
