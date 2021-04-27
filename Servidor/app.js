@@ -8,14 +8,10 @@ const swaggerUI = require('swagger-ui-express');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const cors=require('cors');
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
 const socketIo = require('socket.io');
 
 const {userRoutes, reviewRoutes, playlistRoutes,loginRoutes} = require("./routes/index");
 const {Database, users, reviews, playlists} = require("./src/models");
-const { env } = require('node:process');
-const { Socket } = require('node:dgram');
-
 
 require('./passport-config');
 
@@ -36,7 +32,7 @@ const swaggerOptions = {
     },
     apis: ['./routes/*.js','app.js']
 };
-
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 

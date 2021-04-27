@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import {SocialAuthService, GoogleLoginProvider} from 'angularx-social-login';
+import { SocketIOService } from './globals/services/socket-io.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,8 @@ import {SocialAuthService, GoogleLoginProvider} from 'angularx-social-login';
 export class AppComponent implements OnInit{
   title = 'cinefan-app';
 
-  constructor(private authService:SocialAuthService){
-    
+  constructor(private authService:SocialAuthService, private socketIOService:SocketIOService){
+  
   }
 
   ngOnInit():void{
@@ -18,6 +19,10 @@ export class AppComponent implements OnInit{
       if(user)
         console.log(user);
     })
+
+    this.socketIOService.connect(()=>{
+      console.log('Socket Client Connected!');
+    });
   }
 
   googleLogin(){
