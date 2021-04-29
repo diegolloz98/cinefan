@@ -10,8 +10,8 @@ const passport = require('passport');
 const cors=require('cors');
 const socketIo = require('socket.io');
 
-const {userRoutes, reviewRoutes, playlistRoutes,loginRoutes} = require("./routes/index");
-const {Database, users, reviews, playlists} = require("./src/models");
+const {userRoutes, reviewRoutes, playlistRoutes,loginRoutes, movieRoutes} = require("./routes/index");
+const {Database, users, reviews, playlists, movies} = require("./src/models");
 
 require('./passport-config');
 
@@ -44,6 +44,7 @@ app.use('/playlists',playlistRoutes);
 app.use('/user',userRoutes);
 app.use('/reviews',reviewRoutes);
 app.use('/login',loginRoutes);
+app.use('/movies',movieRoutes);
 app.use(cors());
 
 app.use(cookieSession({

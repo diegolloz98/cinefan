@@ -2,6 +2,7 @@
   
   
 </style>
+
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -9,83 +10,23 @@
   integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 
-
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="#home">Cinefan</a>
-      <a class="nav-item nav-link" href="#news">News</a>
-      <a class="nav-item nav-link"a class="nav-item nav-link" href="#contact">Contact</a>
-      <a class="nav-item nav-link" href="#about">About</a>
-      <a style="padding: 3px;">
-        <button (click)="googleLogin()">Login</button>
-      </a>
-    </div>
-  </nav>
-  <div class="container my-4">
-  
-    <!--Carousel Wrapper-->
-    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-  
-    <!--Controls-->
-    <div class="controls-top">
-      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-    </div>
-    <!--/.Controls-->
-  
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-      <li data-target="#multi-item-example" data-slide-to="1"></li>
-      <li data-target="#multi-item-example" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-  
-    <!--Slides-->
-      <div class="carousel-inner" role="listbox">
-  
-    <!--First slide-->
-      <div class="carousel-item active">
-  
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="http://es.web.img2.acsta.net/r_1920_1080/pictures/18/10/03/19/36/5818625.jpg"
-                alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Spiderman Into the Spiderverse</h4>
-                <p class="card-text">Miles Morales is a New York teen struggling with school, friends and, on top of that, being the new Spider-Man. When he comes across Peter Parker, the erstwhile saviour of New York, in the multiverse, Miles must train to become the new protector of his city.</p>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-md-4 clearfix d-none d-md-block">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://www.dhresource.com/0x0/f2/albu/g6/M00/57/80/rBVaSFvnyY6AbvYOAAOrz3sNP9w721.jpg/inglourious-basterds-movie-art-silk-poster.jpg"
-                alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Inglorious Basterds</h4>
-                <p class="card-text">In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.</p>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-md-4 clearfix d-none d-md-block">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://collider.com/wp-content/uploads/2019/06/once-upon-a-time-in-hollywood-poster.jpg"
-                alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Once Upon a time in Hollywood</h4>
-                <p class="card-text">A faded television actor and his stunt double strive to achieve fame and success in the final years of Hollywood's Golden Age in 1969 Los Angeles.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-      <!--/.First slide-->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link active" href="#home">Cinefan</a>
+    <a class="nav-item nav-link" routerLink = "/movies">Movies</a>
+    <a class="nav-item nav-link"a class="nav-item nav-link" href="#contact">Contact</a>
+    <a class="nav-item nav-link" href="#about">About</a>
+    <a style="padding: 3px;">
+      <button (click)="googleLogin()">Login</button>
+    </a>
   </div>
+</nav>
   
+<div class="container">
+
+  <router-outlet></router-outlet>
+  
+</div>
   
   
 

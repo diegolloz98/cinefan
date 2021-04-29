@@ -5,19 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment} from './../environments/environment';
 import { Routes, RouterModule } from '@angular/router';
-import { MoviesComponent } from './movies/movies.component';
+
+import { MoviesModule } from './movies/movies.module';
 
 const routes: Routes=[];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MoviesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MoviesModule
   ],
   providers: [
     {
