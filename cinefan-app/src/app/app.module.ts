@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment} from './../environments/environment';
 import { Routes, RouterModule } from '@angular/router';
+import { MoviesComponent } from './movies/movies.component';
 
 const routes: Routes=[];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
