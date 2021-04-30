@@ -63,6 +63,10 @@ router.get(":user_id", (req, res)=>{
     res.status(200).send('Playlists from user sent!');
 });
 
+router.get("", (req, res)=>{
+    res.status(200).send('Playlists sent!');
+});
+
 router.get(":playlist_id", (req, res)=>{
     res.status(200).send('Playlist sent!');
 });
