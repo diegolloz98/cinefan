@@ -58,22 +58,82 @@
         font-size: 17px;
       }
 
-      h1,
+      
       h2,
       h3,
       h4,
-      h5,
-      h6 {
+      h5{
         margin: 8px 0;
       }
 
       p {
         margin: 0;
+        
       }
 
       .spacer {
         flex: 1;
       }
+
+      h1 {
+        font-family: "Impact", "fantasy" !important;
+        text-align: center!important;
+        color: yellow!important;
+        font-size: 600% !important;
+        
+      }
+      .vertical-center {
+        min-height: 50%!important;  /* Fallback for browsers do NOT support vh unit */
+        min-height: 50vh!important; /* These two lines are counted as one :-)       */
+
+        display: flex!important;
+        align-items: center!important;
+      }
+      .p3{
+        align-items: center!important;
+      }
+      button {
+        border-top: 0!important;
+        cursor: pointer!important;
+      }
+      .margin-auto {
+        margin: 0 auto!important;
+      }
+
+      .sunflower {
+        width: 200px!important;
+        background: #f1c40f;
+        border-bottom: #f39c12 3px solid!important;
+        border-left: #f39c12 1px solid!important;
+        border-right: #f39c12 1px solid!important;
+        border-radius: 6px!important;
+        text-align: center!important;
+        color: white!important;
+        padding: 20px!important;
+        float: initial !important;
+        font-size: 24px!important;
+        font-weight: 800!important;
+        
+      }
+
+      .sunflower:hover {
+        opacity: 0.8!important;
+      }
+
+      .sunflower:active {
+        width: 200px!important;
+        background: #DAB10E!important;
+        border-bottom: #f39c12 1px solid!important;
+        border-left: #f39c12 1px solid!important;
+        border-right: #f39c12 1px solid!important;
+        border-radius: 6px!important;
+        text-align: center!important;
+        color: white!important;
+        padding: 20px!important;
+        margin-top: 3px!important;
+        float: initial !important;
+      }
+
 
       /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
       @media screen and (max-width: 600px) {
@@ -96,6 +156,7 @@
       .col-md-4{
         background-color: rgb(20,24,28) !important;
       }
+
   </style>
   <body>
     <app-root></app-root>   
