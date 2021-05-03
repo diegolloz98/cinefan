@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeComponent} from './home/home.component';
 import {MovieComponent} from './movie/movie.component';
 import {PlaylistComponent} from './playlist/playlist.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes=[];
 
@@ -29,6 +30,7 @@ const routes: Routes=[];
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     {

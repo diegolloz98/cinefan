@@ -40,7 +40,7 @@ router.get("",async(req,res)=>{
             moviesToShow.push(movie);
         }
         console.log(moviesToShow);
-        res.status(200).send(moviesToShow);   
+        res.status(200).header("Access-Control-Allow-Origin","*").send(moviesToShow);   
     });
     }catch(err){
         res.status(500).end(err);
@@ -69,7 +69,7 @@ router.get("/:movieId",async (req,res)=>{
         if (re.error) 
             throw new Error(re.error);
         
-        res.status(200).send(re.body);
+        res.status(200).header("Access-Control-Allow-Origin","*").send(re.body);
     });
 })
 

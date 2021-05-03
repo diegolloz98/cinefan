@@ -40,12 +40,18 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json()); 
 app.use(express.static(path.join(__dirname+'/Content')));
 app.use(express.static(path.join(__dirname+'/Scripts')));
-app.use('/playlists',playlistRoutes);
-app.use('/user',userRoutes);
-app.use('/reviews',reviewRoutes);
-app.use('/login',loginRoutes);
-app.use('/movies',movieRoutes);
+app.use('/api/playlists',playlistRoutes);
+app.use('/api/user',userRoutes);
+app.use('/api/reviews',reviewRoutes);
+app.use('/api/login',loginRoutes);
+app.use('/api/movies',movieRoutes);
 app.use(cors());
+
+app.use(function(req,res,next){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(cookieSession({
     name:'session',
