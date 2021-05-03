@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeComponent} from './home/home.component';
 import {MovieComponent} from './movie/movie.component';
 import {PlaylistComponent} from './playlist/playlist.component';
+import {MovieInfoComponent} from './movieInfo/movieInfo.component';
 import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes=[];
@@ -21,7 +22,8 @@ const routes: Routes=[];
     AppComponent,
     HomeComponent,
     MovieComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,
