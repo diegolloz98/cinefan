@@ -12,10 +12,10 @@
 
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="nav navbar-nav">
-    <a class="nav-item nav-link active" href="#home">Cinefan</a>
-    <a class="nav-item nav-link" routerLink = "/movies">Movies</a>
-    <a class="nav-item nav-link"a class="nav-item nav-link" href="#contact">Contact</a>
-    <a class="nav-item nav-link" href="#about">About</a>
+    <a class="nav-item nav-link active" [routerLink]="['/home']">Home</a>
+    <a class="nav-item nav-link active" [routerLink]="['/movie']">Movies</a>
+    <a class="nav-item nav-link active"a [routerLink]="['/playlist']">Playlists</a>
+    <a class="nav-item nav-link active" >About</a>
     <a style="padding: 3px;">
       <button (click)="googleLogin()">Log</button>
     </a>
@@ -27,8 +27,3 @@
   <router-outlet></router-outlet>
   
 </div>
-  
-  
-
-<!-- Toolbar -->
-
