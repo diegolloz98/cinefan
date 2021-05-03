@@ -1,5 +1,5 @@
 <style>
-
+  
   
 </style>
 
@@ -14,8 +14,8 @@
   <div class="nav navbar-nav">
     <a class="nav-item nav-link active" [routerLink]="['/home']">Home</a>
     <a class="nav-item nav-link active" [routerLink]="['/movie']">Movies</a>
-    <a class="nav-item nav-link active"a [routerLink]="['/playlist']">Playlists</a>
-    <a class="nav-item nav-link active" >About</a>
+    <a class="nav-item nav-link active" [routerLink]="['/playlist']">Playlists</a>
+    <a class="nav-item nav-link active" [routerLink]="['/movieInfo']">MovieInfo</a>
     <a style="padding: 3px;">
       <button (click)="googleLogin()">Log</button>
     </a>
@@ -23,7 +23,7 @@
 </nav>
   
 <div class="container">
-
+  
   <router-outlet></router-outlet>
   
 </div>
