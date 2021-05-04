@@ -9,7 +9,7 @@ import { SocketIOService } from './globals/services/socket-io.service';
 })
 export class AppComponent implements OnInit{
   title = 'cinefan-app';
-
+  user!:any;
   constructor(private authService:SocialAuthService, private socketIOService:SocketIOService){
   
   }
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
     this.authService.authState.subscribe(user=>{
       if(user)
         console.log(user);
+        this.user=user;
     })
 
     this.socketIOService.connect(()=>{

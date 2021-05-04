@@ -72,7 +72,11 @@ const io = socketIo(server, {
 });
 
 io.on('connection',socket=>{
-    console.log('se ha conectado', socket);
+    console.log('se ha conectado');
+
+    socket.on('ratedFilm', data=>{
+        console.log(data);
+    })
 })
 
 module.exports = router;

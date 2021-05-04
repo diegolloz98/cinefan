@@ -22,7 +22,9 @@ export class SocketIOService {
     });
   }
 
-  emit(eventName:any, data:any){}
+  emit(eventName:any, data:any){
+    this.socketClient.emit(eventName,data);
+  }
 
   broadcast(eventName:any, data:any){}
 

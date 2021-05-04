@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import {Component, OnInit} from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
+import { SocialAuthService } from "angularx-social-login";
+import { SocketIOService} from '../globals/services/socket-io.service';
 
 export class MovieDetails{
     constructor(
@@ -15,15 +17,39 @@ export class MovieDetails{
 
 @Component({
     selector : 'app-movieInfo',
-    templateUrl : 'movieInfo.component.html'
+    templateUrl : 'movieInfo.component.html',
+    styles:[
+        `.container .star-widget input{
+            display: none;
+          }
+          .star-widget label{
+            font-size: 40px;
+            color: #444;
+            padding: 10px;
+            float: right;
+            transition: all 0.2s ease;
+          }
+          input:not(:checked) ~ label:hover,
+          input:not(:checked) ~ label:hover ~ label{
+            color: #fd4;
+          }
+          input:checked ~ label{
+            color: #fd4;
+          }
+          input#rate-5:checked ~ label{
+            color: #fe7;
+            text-shadow: 0 0 20px #952;
+          }`
+    ]
 
 })
 export class MovieInfoComponent implements OnInit{
     title = 'MovieInfo';
     movieId!:any;
     movieDetails!:MovieDetails;
-
-    constructor(private activeParams: ActivatedRoute, private httpClient:HttpClient){}
+    review!:any;
+    score!:any;
+    constructor(private activeParams: ActivatedRoute, private httpClient:HttpClient,private socket:SocketIOService, private authService: SocialAuthService){}
     
     ngOnInit():void{
         this.movieId = this.activeParams.snapshot.paramMap.get("id");
@@ -40,5 +66,14 @@ export class MovieInfoComponent implements OnInit{
             )
             console.log(res);
         });
+    }
+
+    rate(){
+        console.log(this.review);
+        this.socket.emit('ratedFilm',{
+            id: this.movieId,
+            score: this.score,
+            review: this.review
+        })
     }
 }
