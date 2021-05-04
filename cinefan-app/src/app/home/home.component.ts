@@ -1,5 +1,5 @@
-import {Component, OnInit} from "@angular/core";
-
+import { HttpClient } from "@angular/common/http";
+import {Component, Input, OnInit} from "@angular/core";
 
 @Component({
 
@@ -7,7 +7,14 @@ import {Component, OnInit} from "@angular/core";
     templateUrl : 'home.component.html'
 
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
     title = 'Home';
+    constructor(private httpClient:HttpClient){
 
+    }
+
+    ngOnInit():void
+    {
+
+    }
 }

@@ -73,4 +73,30 @@ router.get("/:movieId",async (req,res)=>{
     });
 })
 
+router.get("/details/:id",(req,res)=>{
+    let title=req.params.id;
+    console.log(title);
+    var req = unirest("GET", "https://imdb8.p.rapidapi.com/title/get-overview-details");
+
+    req.query({
+        "tconst": title,
+        "currentCountry": "US",
+        "purchaseCountry": "US"
+    });
+
+    req.headers({
+        "x-rapidapi-key": "29fd27022cmsh007057c5f99f22ep1074e2jsn525b4647b843",
+        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "useQueryString": true
+    });
+
+
+    req.end(function (re) {
+        if (re.error) 
+            throw new Error(re.error);
+        
+        res.status(200).header("Access-Control-Allow-Origin","*").send(re.body);
+    });
+});
+
 module.exports = router;

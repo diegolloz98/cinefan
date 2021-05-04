@@ -3,6 +3,7 @@ import {Component, OnInit} from "@angular/core";
 
 export class Movie{
     constructor(
+      public movieId: string,
       public title: string,
       public year: number,
       public image: string
@@ -40,7 +41,8 @@ export class MovieComponent implements OnInit{
                     headers:{"Access-Control-Allow-Origin": "*"}
                 }).subscribe(res=>{
                     let data = res.title;
-                    let mov = new Movie(data.title,data.year,data.image.url);
+                    let id = element.slice(0,element.length-1);
+                    let mov = new Movie(id,data.title,data.year,data.image.url);
                     this.movies.push(mov);
                     console.log(data);
                 })

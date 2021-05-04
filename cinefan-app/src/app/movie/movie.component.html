@@ -21,7 +21,7 @@
                     
                 <div class="item" *ngFor="let movie of movies">
                 	<div class="row">
-                	  <div class="col-md-3"><a href="#" class="thumbnail"><img src={{movie.image}} alt={{movie.title}} style="max-width:100%;"></a></div>
+                	  <div class="col-md-3"><a [routerLink]="['/movieInfo', movie.movieId]" class="thumbnail"><img src={{movie.image}} alt={{movie.title}} style="max-width:100%;"></a></div>
                 	</div><!--.row-->
                 </div><!--.item-->                 
 		</div>
