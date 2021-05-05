@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import {Component, OnInit} from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
-import { SocialAuthService } from "angularx-social-login";
 import { SocketIOService} from '../globals/services/socket-io.service';
+import { AppComponent } from '../app.component';
 
 export class MovieDetails{
     constructor(
@@ -49,7 +49,7 @@ export class MovieInfoComponent implements OnInit{
     movieDetails!:MovieDetails;
     review!:any;
     score!:any;
-    constructor(private activeParams: ActivatedRoute, private httpClient:HttpClient,private socket:SocketIOService, private authService: SocialAuthService){}
+    constructor(private activeParams: ActivatedRoute, private httpClient:HttpClient,private socket:SocketIOService, private app:AppComponent){}
     
     ngOnInit():void{
         this.movieId = this.activeParams.snapshot.paramMap.get("id");
@@ -69,11 +69,11 @@ export class MovieInfoComponent implements OnInit{
     }
 
     rate(){
-        console.log(this.review);
         this.socket.emit('ratedFilm',{
             id: this.movieId,
             score: this.score,
-            review: this.review
+            review: this.review,
+            user: this.app.user
         })
     }
 }

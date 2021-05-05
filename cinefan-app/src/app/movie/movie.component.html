@@ -1,8 +1,95 @@
+<style>
+    @charset "UTF-8";
+.screen25 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (minmax(25%, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+}
 
+.screen50 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (minmax(50%, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+
+.screen75 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (minmax(75%, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(75%, 1fr));
+}
+
+.screen100 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (minmax(100%, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+}
+
+@media screen and (max-width: 768px) {
+  .screen25 {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: (minmax(10rem, 20rem))[auto-fit];
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    .screen50 {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: (minmax(10rem, 20rem))[auto-fit];
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    .screen75 {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: (minmax(10rem, 20rem))[auto-fit];
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    .screen100 {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: (100%)[auto-fit];
+            grid-template-columns: repeat(auto-fit, 100%);
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    }
+
+    /*la imagen está demasiado grande entonces aplico esta regla en general para que se vea completa*/
+    img {
+    max-width: 50%;
+    max-height: 50%;
+    }
+    /*# sourceMappingURL=styles.css.map */
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1 class="Display-1">All movies</h1>
+            <h1 class="Display-1">Top movies</h1>
         </div>
     </div>
 
@@ -10,20 +97,12 @@
 		<div class="col-md-12">
                 <div id="Carousel" class="carousel slide">
                  
-                <ol class="carousel-indicators">
-                    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#Carousel" data-slide-to="1"></li>
-                    <li data-target="#Carousel" data-slide-to="2"></li>
-                </ol>
-                 
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    
-                <div class="item" *ngFor="let movie of movies">
-                	<div class="row">
-                	  <div class="col-md-3"><a [routerLink]="['/movieInfo', movie.movieId]" class="thumbnail"><img src={{movie.image}} alt={{movie.title}} style="max-width:100%;"></a></div>
-                	</div><!--.row-->
-                </div><!--.item-->                 
-		</div>
+                <table>
+                    <tr>
+                        <td *ngFor="let movie of movies">
+                            <a [routerLink]="['/movieInfo', movie.movieId]" class="thumbnail"><img src={{movie.image}} alt={{movie.title}} style="width: 350px;"></a>
+                        </td>
+                    </tr>
+                </table>                    
 	</div>
 </div><!--.container-->

@@ -75,6 +75,8 @@ io.on('connection',socket=>{
     console.log('se ha conectado');
 
     socket.on('ratedFilm', data=>{
+        if(data.user == undefined)
+            console.log('No se ha logeado, lmao')
         console.log(data);
     })
 })

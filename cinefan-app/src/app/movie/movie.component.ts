@@ -49,4 +49,24 @@ export class MovieComponent implements OnInit{
             }); 
         });
     }
+
+    getMoviesLike(title:string):any{
+        this.httpClient.get<any>('/api/movies/find/'+title,{
+            headers:{"Access-Control-Allow-Origin": "*"}
+        }).subscribe(res=>{
+            console.log(res)
+            this.top = res;
+            this.top.forEach(element => {
+                this.httpClient.get<any>('/api/movies/'+element,{
+                    headers:{"Access-Control-Allow-Origin": "*"}
+                }).subscribe(res=>{
+                    let data = res.title;
+                    let id = element.slice(0,element.length-1);
+                    let mov = new Movie(id,data.title,data.year,data.image.url);
+                    this.movies.push(mov);
+                    console.log(data);
+                })
+            }); 
+        })
+    }
 }
