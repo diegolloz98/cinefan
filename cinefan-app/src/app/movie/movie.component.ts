@@ -22,12 +22,14 @@ export class MovieComponent implements OnInit{
     top!: string[]
     movies!: Movie[]
     search!:any;
+    foundMovies!:Movie[];
 
     constructor(private httpClient: HttpClient, private activeParams: ActivatedRoute){
 
     }
 
     ngOnInit():void{
+        this.movies = [];
         this.search = this.activeParams.snapshot.paramMap.get("query");
         if(this.search == undefined)
             this.getTopMovies();
@@ -36,7 +38,6 @@ export class MovieComponent implements OnInit{
     }
 
     getTopMovies(){
-        this.movies = [];
         this.httpClient.get<any>('/api/movies',{
             headers:{"Access-Control-Allow-Origin": "*"}
         }).subscribe(res=>{
@@ -58,26 +59,17 @@ export class MovieComponent implements OnInit{
         });
     }
 
-    getMoviesLike(title:string):any{
-        this.httpClient.get<any>('/api/movies/find/'+title,{
+    getMoviesLike(query:string):any{
+        this.httpClient.get<any>('/api/movies/find/'+query,{
             headers:{"Access-Control-Allow-Origin": "*"}
         }).subscribe(res=>{
             console.log(res)
-            this.top = res;
-            this.top.forEach(element => {
-                this.httpClient.get<any>('/api/movies/'+element,{
-                    headers:{"Access-Control-Allow-Origin": "*"}
-                }).subscribe(res=>{
-                    let data = res.title;
-                    let id = element.slice(0,element.length-1);
-                    let mov = new Movie(id,data.title,data.year,data.image.url);
-                    this.movies.push(mov);
-                    console.log(data);
-                    setTimeout(function () {
-                        console.log("next!");
-                    },500);
-                })
-            }); 
+            let found = res.Search;
+            for(let i=0;i<found.length;i++){
+                let temp=found[i];
+                let mov= new Movie(temp.imdbID,temp.Title,temp.Year,temp.Poster);
+                this.movies.push(mov);
+            } 
         })
     }
 

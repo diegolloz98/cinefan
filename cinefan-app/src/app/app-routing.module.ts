@@ -7,6 +7,7 @@ import {MovieInfoComponent} from './movieInfo/movieInfo.component'
 
 const routes: Routes = [
   {path : 'movie', component: MovieComponent},
+  {path : 'movie/:query', component: MovieComponent},
   {path : 'home', component: HomeComponent},
   {path : 'playlist', component: PlaylistComponent},
   {path : 'movieInfo/:id', component: MovieInfoComponent}

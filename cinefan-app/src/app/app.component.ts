@@ -10,6 +10,7 @@ import { SocketIOService } from './globals/services/socket-io.service';
 export class AppComponent implements OnInit{
   title = 'cinefan-app';
   user!:any;
+  query!:any;
   constructor(private authService:SocialAuthService, private socketIOService:SocketIOService){
   
   }
@@ -28,5 +29,11 @@ export class AppComponent implements OnInit{
 
   googleLogin(){
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  getQuery(event:any):any{
+    let q=event.target.value;
+    console.log(q);
+    this.query=q;
   }
 }

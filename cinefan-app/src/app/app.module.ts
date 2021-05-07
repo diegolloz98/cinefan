@@ -14,8 +14,9 @@ import {MovieComponent} from './movie/movie.component';
 import {PlaylistComponent} from './playlist/playlist.component';
 import {MovieInfoComponent} from './movieInfo/movieInfo.component';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchDataService } from './globals/services/search-data.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes=[];
 
@@ -36,7 +37,8 @@ const routes: Routes=[];
     MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -52,7 +54,8 @@ const routes: Routes=[];
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    SearchDataService
   ],
   bootstrap: [AppComponent]
 })
