@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import {Component, OnInit} from "@angular/core";
+import { ActivatedRoute } from '@angular/router';
 
 export class Movie{
     constructor(
@@ -20,13 +21,18 @@ export class Movie{
 export class MovieComponent implements OnInit{
     top!: string[]
     movies!: Movie[]
+    search!:any;
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private activeParams: ActivatedRoute){
 
     }
 
     ngOnInit():void{
-        this.getTopMovies();
+        this.search = this.activeParams.snapshot.paramMap.get("query");
+        if(this.search == undefined)
+            this.getTopMovies();
+        else
+            this.getMoviesLike(this.search);
     }
 
     getTopMovies(){
@@ -40,11 +46,13 @@ export class MovieComponent implements OnInit{
                 this.httpClient.get<any>('/api/movies/'+element,{
                     headers:{"Access-Control-Allow-Origin": "*"}
                 }).subscribe(res=>{
-                    let data = res.title;
-                    let id = element.slice(0,element.length-1);
-                    let mov = new Movie(id,data.title,data.year,data.image.url);
+                    let id = element.slice(0,element.length);
+                    let mov = new Movie(id,res.Title,res.Year,res.Poster);
                     this.movies.push(mov);
-                    console.log(data);
+                    console.log(res);
+                    setTimeout(function () {
+                        console.log("next!");
+                    },500);
                 })
             }); 
         });
@@ -65,8 +73,13 @@ export class MovieComponent implements OnInit{
                     let mov = new Movie(id,data.title,data.year,data.image.url);
                     this.movies.push(mov);
                     console.log(data);
+                    setTimeout(function () {
+                        console.log("next!");
+                    },500);
                 })
             }); 
         })
     }
+
+    
 }

@@ -8,7 +8,7 @@ export class MovieDetails{
     constructor(
         public title:string,
         public image:string,
-        public runTime:number,
+        public runTime:string,
         public year: number,
         public genere:string,
         public outline:string
@@ -57,12 +57,12 @@ export class MovieInfoComponent implements OnInit{
             headers:{"Access-Control-Allow-Origin": "*"}
         }).subscribe(res => {
             this.movieDetails = new MovieDetails(
-                res.title.title,
-                res.title.image.url,
-                res.title.runningTimeInMinutes,
-                res.title.year,
-                res.genres[0],
-                res.plotOutline.text
+                res.Title,
+                res.Poster,
+                res.RunTime,
+                res.Year,
+                res.Genre,
+                res.Plot
             )
             console.log(res);
         });

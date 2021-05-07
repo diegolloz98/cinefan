@@ -15,6 +15,7 @@ import {PlaylistComponent} from './playlist/playlist.component';
 import {MovieInfoComponent} from './movieInfo/movieInfo.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 const routes: Routes=[];
 
@@ -24,7 +25,8 @@ const routes: Routes=[];
     HomeComponent,
     MovieComponent,
     PlaylistComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

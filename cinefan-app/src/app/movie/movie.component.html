@@ -98,10 +98,9 @@
                 <div id="Carousel" class="carousel slide">
                  
                 <table>
-                    <tr>
-                        <td *ngFor="let movie of movies">
+                    <tr *ngFor="let movie of movies" style="align-items: center;">
                             <a [routerLink]="['/movieInfo', movie.movieId]" class="thumbnail"><img src={{movie.image}} alt={{movie.title}} style="width: 350px;"></a>
-                        </td>
+                        
                     </tr>
                 </table>                    
 	</div>

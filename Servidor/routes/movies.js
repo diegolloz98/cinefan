@@ -17,16 +17,16 @@ const app = express();
 
 router.get("",async(req,res)=>{
     try{
-    let imdbreq = unirest("GET", "https://imdb8.p.rapidapi.com/title/get-most-popular-movies");
+    let imdbreq = unirest("GET", "https://movies-tvshows-data-imdb.p.rapidapi.com/");
     imdbreq.query({
-        "homeCountry": "US",
-        "purchaseCountry": "US",
-        "currentCountry": "US"
+        "type": "get-popular-movies",
+        "page": "1",
+        "year": "2021"
     });
     
     imdbreq.headers({
         "x-rapidapi-key": "29fd27022cmsh007057c5f99f22ep1074e2jsn525b4647b843",
-        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
         "useQueryString": true
     });
     
@@ -35,8 +35,8 @@ router.get("",async(req,res)=>{
         if (re.error) 
             throw new Error(re.error);
         let moviesToShow=[]
-        for(let i = 0;i<4;i++){
-            movie = re.body[i].replace("/title/","");
+        for(let i = 0;i<20;i++){
+            movie = re.body.movie_results[i].imdb_id;
             moviesToShow.push(movie);
         }
         console.log(moviesToShow);
