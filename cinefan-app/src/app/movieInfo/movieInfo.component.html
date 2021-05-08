@@ -44,11 +44,25 @@
                     </div>
                   </div>
                 </td>
+                <td>
+                  <h2 style="color: yellow;">Related Articles</h2>
+                  <div class="Amazon Articles">
+                    <table style="background-color: antiquewhite;">
+                      <tr *ngFor="let article of articles.slice(0,5)">
+                        <td>
+                          <img src={{article.image}} width="30px" height="40px">
+                        </td>
+                        <td style="size: 50%;">
+                          <p>{{article.title}}</p>
+                          <p>{{article.price}}</p>
+                          <a href={{article.link}}>Buy Now</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </td>
                 </tr>
               </table>
-              
-              
-              
             </div>
           </div>
           

@@ -4,6 +4,7 @@ const playlistRoutes = require('./playlists');
 const reviewRoutes = require('./reviews');
 const loginRoutes = require('./login');
 const movieRoutes = require('./movies');
+const articleRoutes = require('./articles');
 const router = express.Router();
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
     reviewRoutes,
     playlistRoutes,
     loginRoutes,
-    movieRoutes
+    movieRoutes,
+    articleRoutes
 };
