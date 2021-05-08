@@ -15,6 +15,35 @@ dotenv.config();
 
 const app = express();
 
+/** 
+ * @swagger
+ * /movies:
+ *  get:
+ *      description: gets the 20 most popular movies off of Movies-TVShows API from 2021
+ *      responses:
+ *          '200':
+ *              description: sends list of movies
+ * 
+ * /movies/:movieId:
+ *  get:
+ *      description: gets movieId's data from IMDB alternative API
+ *      responses:
+ *          '200':
+ *              description: Info sent
+ * /movies/details/:id:
+ *  get:
+ *      description: gets the details of movie with param's id from IMDB alternative API
+ *      responses:
+ *          '200':
+ *              description: Info sent
+ * /movies/find/:id:
+ *  get:
+ *      description: gets from IMDB alternative API a list of movies which titles are like the id sent
+ *      responses:
+ *          '200':
+ *              description: list of movies sent
+*/
+
 router.get("",async(req,res)=>{
     try{
     let imdbreq = unirest("GET", "https://movies-tvshows-data-imdb.p.rapidapi.com/");

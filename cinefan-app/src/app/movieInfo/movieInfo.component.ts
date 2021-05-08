@@ -4,6 +4,16 @@ import { ActivatedRoute } from '@angular/router';
 import { SocketIOService} from '../globals/services/socket-io.service';
 import { AppComponent } from '../app.component';
 
+export class Article{
+    constructor(
+        public title: string,
+        public image: string,
+        public price: string,
+        public link: string
+    ){}
+}
+
+
 export class MovieDetails{
     constructor(
         public title:string,
@@ -49,9 +59,11 @@ export class MovieInfoComponent implements OnInit{
     movieDetails!:MovieDetails;
     review!:any;
     score!:any;
+    articles!:Article[];
     constructor(private activeParams: ActivatedRoute, private httpClient:HttpClient,private socket:SocketIOService, private app:AppComponent){}
     
     ngOnInit():void{
+        this.articles = [];
         this.movieId = this.activeParams.snapshot.paramMap.get("id");
         this.httpClient.get<any>('/api/movies/details/'+this.movieId,{
             headers:{"Access-Control-Allow-Origin": "*"}
@@ -65,6 +77,22 @@ export class MovieInfoComponent implements OnInit{
                 res.Plot
             )
             console.log(res);
+            this.httpClient.get<any>('/api/articles/'+this.movieDetails.title,{
+                headers:{"Access-Control-Allow-Origin": "*"}
+            }).subscribe(resp =>{
+                resp.forEach((element: { price: { symbol: any; value: any; }; title: string; image: string; link: string; }) => {
+                    let price = element.price.symbol + element.price.value;
+
+                    let temp = new Article(
+                        element.title,
+                        element.image,
+                        price,
+                        element.link
+                    );
+
+                    this.articles.push(temp);
+                });
+            })
         });
     }
 

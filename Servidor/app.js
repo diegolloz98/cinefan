@@ -10,7 +10,7 @@ const passport = require('passport');
 const cors=require('cors');
 const socketIo = require('socket.io');
 
-const {userRoutes, reviewRoutes, playlistRoutes,loginRoutes, movieRoutes} = require("./routes/index");
+const {userRoutes, reviewRoutes, playlistRoutes,loginRoutes, movieRoutes, articleRoutes} = require("./routes/index");
 const {Database, users, reviews, playlists, movies} = require("./src/models");
 
 require('./passport-config');
@@ -45,6 +45,7 @@ app.use('/api/user',userRoutes);
 app.use('/api/reviews',reviewRoutes);
 app.use('/api/login',loginRoutes);
 app.use('/api/movies',movieRoutes);
+app.use('/api/articles',articleRoutes);
 app.use(cors());
 
 app.use(function(req,res,next){

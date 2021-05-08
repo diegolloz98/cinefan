@@ -14,6 +14,36 @@ require('../passport-config');
 
 dotenv.config();
 
+/** 
+ * @swagger
+ * /login:
+ *  get:
+ *      description: test endpoint, does nothing
+ *      responses:
+ *          '200':
+ *              description: OK
+ * /login/google:
+ *  get:
+ *      description: auths passport
+ * 
+ * /login/auth:
+ *  get:
+ *      description: redirects if user was auth'd successfully or not
+ * 
+ * /login/success:
+ *  get:
+ *      description: redirects user to main page, logged in
+ * 
+ * /login/failure:
+ *  get:
+ *      description: does nothing as user couldn't be auth'd
+ * 
+ * /login/logout:
+ *  get:
+ *      description: logs out user and redirects to main page
+ *      
+*/
+
 router.get('',(req,res)=>{
     console.log(req);
     res.status(200).send();
