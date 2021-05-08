@@ -11,6 +11,23 @@ dotenv.config();
 
 const app = express();
 
+/** 
+ * @swagger
+ * /articles:
+ *  get:
+ *      description: tests endpoint, does nothing
+ *      responses:
+ *          '200':
+ *              description: OK
+ * 
+ * /articles/:title:
+ *  get:
+ *      description: gets articles off of the Rainforest API related to the title param
+ *      responses:
+ *          '200':
+ *              description: Articles sent
+*/
+
 router.get("", (req, res)=>{
     console.log(req);
     res.status(200).send('Articles sent!');
