@@ -57,6 +57,6 @@ const routes: Routes=[];
     },
     SearchDataService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, HomeComponent]
 })
 export class AppModule { }
